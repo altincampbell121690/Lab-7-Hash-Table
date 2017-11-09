@@ -1,6 +1,6 @@
 /*
 ListTest.cpp
-*created by Altin Campbell and Erik Rackley
+*created by Altin Campbell
 *CIS 22C, Lab 2
 *Oct 9, 2017
 *11:40:02 PM
@@ -237,6 +237,7 @@ List<listdata>::List(const List &list1)
 
 		            temp = temp->linknext; // continue to point to the next node
 		            iterator->linknext = new Node(temp->data);
+		            iterator->linknext->prevlink = iterator;
 		            iterator = iterator->linknext;
 		        }
 		        stop = iterator;//sets tail of list
@@ -526,7 +527,7 @@ void List <listdata>:: reversePrint() const {
 		return;
 	else{
 		Node* temp = stop;
-		reversePrint(temp);
+		reversePrint(stop);
 		//reversePrint(stop);
 	}
 }
@@ -594,17 +595,18 @@ int found = -1;
 	Node* temp = start;
 	int counter = 1;
     //pointIterator();
-	while(temp->linknext != NULL && (temp->data != data)){
+	//while(temp->linknext != NULL && (temp->data != data)){
+	while(temp != NULL){
+		if (temp->data == data)
+			return counter;
 		temp = temp->linknext;
 		counter++;
 		//advanceIterator();
-		if (temp->data == data)
-			return counter;
 	}
-	cout << "not found: ";
+	//cout << "not found: ";
 return found;
 }
-//////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 template <class listdata>
 int List<listdata>::binarySearch(listdata data) const {
 	assert(size!= 0);
@@ -621,9 +623,8 @@ int List<listdata>::binarySearch(int low, int high, listdata data) const {
 		cout << "Not Found: ";
 		return -1;
 	}
-	//int mid = low + (high-low)/2;
 	if (mid == data)
-		return linearSearch(mid); /// we cant return the index since its const
+		return linearSearch(data); /// we cant return the index since its const
 		//return mid;
 	else if (data < mid)
 		return binarySearch(low, mid-1, data);
