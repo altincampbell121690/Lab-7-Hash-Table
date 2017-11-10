@@ -1,3 +1,10 @@
+//============================================================================
+// Name        : Book.cpp
+// Author      : Altin & Erik the great
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
 #include "Book.h"
 #include <iostream>
 #include <iomanip>
@@ -85,9 +92,10 @@ bool Book::operator > (const Book& book) {
 //ISBN#: <isbn>
 //note that the << is required to be a friend function, not a member function
 //note2: do not print out the <> as part of the output
-friend ostream& operator<<(ostream& os, const Book& book){
- os << book.title << " by " << book.author << endl;
+ostream& operator<<(ostream& os, const Book& book){
+ os << endl;
+ os <<  book.title << " by " << book.author << endl;
  os << "$"<<book.price << endl;
- os << "ISBNA#: " << book.isbn << endl;
+ os << "ISBN#: " << book.isbn << endl;
  return os;
 }

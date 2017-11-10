@@ -1,13 +1,14 @@
-/*
-ListTest.cpp
-*created by Altin Campbell
-*CIS 22C, Lab 2
-*Oct 9, 2017
-*11:40:02 PM
-*/
+//============================================================================
+// Name        : List.H
+// Author      : Altin & Erik the great
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
 
-#ifndef LIST_H_
-#define LIST_H_
+//#ifndef LIST_H_
+//#define LIST_H_
+#pragma once
 #include <cstddef> //for NULL
 #include <iostream>
 #include <cstdlib>
@@ -189,7 +190,7 @@ public:
 
 
 };
-#endif /* LIST_H_ */
+//#endif /* LIST_H_ */
 
 
 /**************************************/
@@ -255,8 +256,9 @@ void List<listdata>::print() const
 {
     Node* temp = start; //create a temporary iterator
     while (temp != NULL) {
-
-       cout << temp->data << " "; //prints data to console
+    	//THIS IS THE REAL ONE: With the space
+    	cout << temp->data << " ";
+    	//cout << temp->data << endl; //prints data to console
 
     	temp = temp->linknext; // traverses the list
     }
